@@ -1,16 +1,70 @@
-# React + Vite
+# Mestre Cuca 🍳
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mestre Cuca é um site de receitas moderno, feito com React + Vite, focado em praticidade, beleza e experiência do usuário. O objetivo é compartilhar receitas deliciosas, organizadas por categorias, com visual profissional e responsivo.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** — Interface moderna e reativa
+- **Vite** — Build rápido e hot reload instantâneo
+- **Tailwind CSS** — Estilização moderna e responsiva
+- **React Router DOM** — Navegação entre páginas sem recarregar
+- **ESLint** — Padrão de código e qualidade
 
-## React Compiler
+## 📂 Estrutura do Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+mestre_cuca/
+├── public/
+│   ├── logo-mestre-cuca.png
+│   ├── receita1.jpg
+│   ├── receita2.jpg
+│   ├── receita3.jpg
+│   └── hero-cooking.jpg
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── Home.jsx
+│   ├── Recipes.jsx
+│   └── components/
+│       └── Header.jsx
+├── package.json
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## 🖥️ Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Página Inicial:** Apresentação do projeto, destaque de receitas e categorias.
+- **Página de Receitas:** Cards dinâmicos com imagem, tempo, dificuldade e descrição.
+- **Navegação:** Menu fixo com links para Início, Receitas e outras seções.
+- **Responsivo:** Visual bonito em qualquer dispositivo.
+- **Imagens:** Todas as imagens devem ser colocadas na pasta `public/` com os nomes corretos.
+
+## 📦 Como rodar o projeto
+
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Rode o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+3. Acesse no navegador:
+   ```
+   http://localhost:5173
+   ```
+   (ou a porta informada no terminal)
+
+## 📝 Como adicionar receitas
+
+- Edite o arquivo `src/Recipes.jsx` e adicione objetos ao array `recipes`.
+- Coloque a imagem correspondente na pasta `public/`.
+
+## 💡 Dicas
+
+- Para gerar imagens de receitas, você pode usar IA gratuita como Bing Image Creator, Mage.Space, Leonardo.Ai, etc.
+- O projeto pode ser facilmente expandido para incluir cadastro de usuários, comentários, favoritos e muito mais!
+
+---
+
+Feito com carinho para quem ama cozinhar! 👨‍🍳👩‍🍳
