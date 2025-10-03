@@ -1,16 +1,23 @@
-# Mestre Cuca 🍳
+# 🚀 PWAFE - React + Vite Project
 
-Mestre Cuca é um site de receitas moderno, feito com React + Vite, focado em praticidade, beleza e experiência do usuário. O objetivo é compartilhar receitas deliciosas, organizadas por categorias, com visual profissional e responsivo.
+![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)
+![Vite](https://img.shields.io/badge/Vite-LATEST-646cff?logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.14-38bdf8?logo=tailwindcss)
+![React Router](https://img.shields.io/badge/React%20Router-7.9.3-ca4245?logo=reactrouter)
 
-## 🚀 Tecnologias Utilizadas
+## Sobre o Projeto
+
+**Mestre Cuca** é um site de receitas moderno, desenvolvido com React e Vite, pensado para ser rápido, bonito e fácil de usar. O objetivo é partilhar receitas deliciosas, organizadas por categorias, com um visual profissional e totalmente responsivo.
+
+## 🛠️ Tecnologias
 
 - **React 19** — Interface moderna e reativa
 - **Vite** — Build rápido e hot reload instantâneo
 - **Tailwind CSS** — Estilização moderna e responsiva
 - **React Router DOM** — Navegação entre páginas sem recarregar
-- **ESLint** — Padrão de código e qualidade
+- **ESLint** — Qualidade e padrão de código
 
-## 📂 Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 mestre_cuca/
@@ -31,40 +38,40 @@ mestre_cuca/
 └── README.md
 ```
 
-## 🖥️ Funcionalidades
+## Funcionalidades
 
-- **Página Inicial:** Apresentação do projeto, destaque de receitas e categorias.
+- **Página Inicial:** Apresentação do projeto, receitas em destaque e categorias.
 - **Página de Receitas:** Cards dinâmicos com imagem, tempo, dificuldade e descrição.
-- **Navegação:** Menu fixo com links para Início, Receitas e outras seções.
-- **Responsivo:** Visual bonito em qualquer dispositivo.
+- **Navegação:** Menu fixo com links para Início, Receitas e outras secções.
+- **Responsivo:** Visual apelativo em qualquer dispositivo.
 - **Imagens:** Todas as imagens devem ser colocadas na pasta `public/` com os nomes corretos.
 
-## 📦 Como rodar o projeto
+## Como começar
 
-1. Instale as dependências:
+1. Instalar as dependências:
    ```bash
    npm install
    ```
-2. Rode o servidor de desenvolvimento:
+2. Iniciar o servidor de desenvolvimento:
    ```bash
    npm run dev
    ```
-3. Acesse no navegador:
+3. Abrir no navegador:
    ```
    http://localhost:5173
    ```
-   (ou a porta informada no terminal)
+   (ou a porta indicada no terminal)
 
-## 📝 Como adicionar receitas
+## Como adicionar receitas
 
-- Edite o arquivo `src/Recipes.jsx` e adicione objetos ao array `recipes`.
-- Coloque a imagem correspondente na pasta `public/`.
+- Editar o ficheiro `src/Recipes.jsx` e adicionar objetos ao array `recipes`.
+- Colocar a imagem correspondente na pasta `public/`.
 
-## 💡 Dicas
+## Dicas
 
-- Para gerar imagens de receitas, você pode usar IA gratuita como Bing Image Creator, Mage.Space, Leonardo.Ai, etc.
-- O projeto pode ser facilmente expandido para incluir cadastro de usuários, comentários, favoritos e muito mais!
+- Para gerar imagens de receitas, pode usar IA gratuita como Bing Image Creator, Mage.Space, Leonardo.Ai, etc.
+- O projeto pode ser facilmente expandido para incluir registo de utilizadores, comentários, favoritos e muito mais!
 
 ---
 
-Feito com carinho para quem ama cozinhar! 👨‍🍳👩‍🍳
+Feito com paixão para quem adora cozinhar! 👨‍🍳👩‍🍳
