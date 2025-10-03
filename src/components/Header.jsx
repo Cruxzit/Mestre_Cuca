@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -8,14 +10,13 @@ const Header = () => {
           <img src="/logo-mestre-cuca.png" alt="Mestre Cuca Logo" className="logo-img" />
           <h1 className="brand-title">Mestre Cuca</h1>
         </div>
-        
         <nav className="main-nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="#home" className="nav-link">Início</a>
+              <Link to="/" className="nav-link">Início</Link>
             </li>
             <li className="nav-item">
-              <a href="#receitas" className="nav-link">Receitas</a>
+              <Link to="/receitas" className="nav-link">Receitas</Link>
             </li>
             <li className="nav-item">
               <a href="#categorias" className="nav-link">Categorias</a>
@@ -28,7 +29,6 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-
         <div className="header-actions">
           <button className="search-btn">🔍</button>
           <button className="menu-btn">☰</button>
