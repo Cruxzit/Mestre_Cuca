@@ -1052,3 +1052,410 @@ body {
     margin: 0 auto;
   }
 }
+
+/* ----------------------------- */
+/* Sistema de Favoritos */
+/* ----------------------------- */
+
+/* FaveButton - Advanced Heart Animation System */
+.fave-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+  z-index: 10;
+  overflow: visible;
+}
+
+.fave-button:active {
+  transform: scale(0.95);
+}
+
+.fave-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Button sizes */
+.fave-button-small {
+  width: 35px;
+  height: 35px;
+}
+
+.fave-button-medium {
+  width: 40px;
+  height: 40px;
+}
+
+.fave-button-large {
+  width: 50px;
+  height: 50px;
+}
+
+/* Heart icon container */
+.fave-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fave-button-small .fave-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.fave-button-medium .fave-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.fave-button-large .fave-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Heart SVG */
+.heart-svg {
+  width: 100%;
+  height: 100%;
+  color: #333333;
+  transition: color 0.2s ease;
+}
+
+.heart-svg path {
+  fill: currentColor;
+}
+
+.fave-button.liked .heart-svg {
+  color: #e2264d;
+}
+
+.fave-button:hover .heart-svg {
+  color: #555555;
+}
+
+.fave-button.liked:hover .heart-svg {
+  color: #d41843;
+}
+
+/* Heart bounce animation when liked */
+.fave-button.liked.animating .fave-icon {
+  animation: heartBounce 1s ease-out;
+}
+
+@keyframes heartBounce {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1.1); }
+  45% { transform: scale(1.25); }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Expanding ring effect */
+.fave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #dd4688;
+  border-radius: 50%;
+  z-index: 1;
+  animation: ringExpand 0.4s ease-out forwards;
+}
+
+@keyframes ringExpand {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  50% {
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+/* Sparks container */
+.fave-sparks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Individual spark */
+.fave-spark {
+  position: absolute;
+  transform: rotate(var(--rotation));
+  animation: sparkIgnite 0.6s ease-out var(--delay) forwards;
+}
+
+/* Spark dots */
+.spark-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: sparkFade 0.6s ease-out var(--delay) forwards;
+}
+
+.spark-dot-1 {
+  width: 4px;
+  height: 4px;
+  background: #98dbe4;
+  top: -25px;
+  left: -2px;
+}
+
+.spark-dot-2 {
+  width: 3px;
+  height: 3px;
+  background: #f7bc30;
+  top: -35px;
+  left: -1.5px;
+}
+
+/* Spark animations */
+@keyframes sparkIgnite {
+  0% {
+    transform: rotate(var(--rotation)) scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(var(--rotation)) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkFade {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Button background for positioning */
+.fave-button-positioned {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fave-button-positioned:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Position variants */
+.fave-button-top-right {
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+}
+
+.fave-button-header-action {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(245, 230, 211, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #F5E6D3;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.fave-button-header-action:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(245, 230, 211, 0.5);
+  transform: translateY(-1px);
+}
+
+.fave-button-header-action.liked {
+  background: rgba(226, 38, 77, 0.2);
+  border-color: #e2264d;
+  color: #e2264d;
+}
+
+/* Text in button */
+.fave-text {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Container for recipe cards */
+.recipe-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Header de detalhes com ações */
+.detail-header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Página de favoritos */
+.favorites-page {
+  padding: 40px 0;
+  background: transparent;
+  min-height: 60vh;
+}
+
+.favorites-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #8B4513;
+  margin-bottom: 32px;
+  font-family: Georgia, serif;
+  letter-spacing: 2px;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.favorites-empty p {
+  font-size: 1.1rem;
+  color: #654321;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .detail-header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .fave-button-header-action {
+    justify-content: center;
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .fave-text {
+    font-size: 0.9rem;
+  }
+  
+  .fave-button-small {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .fave-button-medium {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .fave-button-large {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .fave-button-small .fave-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .fave-button-medium .fave-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .fave-button-large .fave-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .fave-button-positioned {
+    top: 12px;
+    right: 12px;
+  }
+  
+  /* Adjust ring effect for mobile */
+  @keyframes ringExpand {
+    0% {
+      width: 15px;
+      height: 15px;
+      opacity: 1;
+    }
+    50% {
+      width: 40px;
+      height: 40px;
+      opacity: 0.8;
+    }
+    100% {
+      width: 50px;
+      height: 50px;
+      opacity: 0;
+    }
+  }
+  
+  /* Adjust spark effects for mobile */
+  .spark-dot-1 {
+    width: 3px;
+    height: 3px;
+    top: -20px;
+  }
+  
+  .spark-dot-2 {
+    width: 2px;
+    height: 2px;
+    top: -28px;
+  }
+  
+  @keyframes sparkFade {
+    0% {
+      transform: translateY(0) scale(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-8px) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-15px) scale(0);
+      opacity: 0;
+    }
+  }
+}

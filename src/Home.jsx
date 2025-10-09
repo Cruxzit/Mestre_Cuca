@@ -9,7 +9,7 @@ const Home = () => {
           <div className="hero-content">
             <h1 className="hero-title">Bem-vindos ao Mestre Cuca</h1>
             <p className="hero-subtitle">
-              Descubra receitas incríveis e transforme sua cozinha num verdadeiro paraíso gastronômico
+              Descobre receitas incríveis e transforma a tua cozinha num verdadeiro paraíso gastronómico
             </p>
             <div className="hero-buttons">
               <button className="btn-primary">Explorar Receitas</button>
@@ -72,7 +72,7 @@ const Home = () => {
       <section className="categories-section">
         <div className="section-header">
           <h2 className="section-title">Categorias</h2>
-          <p className="section-subtitle">Explore por tipo de prato</p>
+          <p className="section-subtitle">Explora por tipo de prato</p>
         </div>
         
         <div className="categories-grid">

@@ -35,7 +35,7 @@ export default function Footer() {
 
           <div className="footer-newsletter">
             <h4>Newsletter</h4>
-            <p>Receba receitas semanais</p>
+            <p>Recebe receitas semanais</p>
             <form className="newsletter-form">
               <input type="email" placeholder="O seu email" />
               <button type="submit">Subscrever</button>

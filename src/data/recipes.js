@@ -21,7 +21,7 @@ const recipes = [
     time: "50min",
     difficulty: "Fácil",
     ingredients: ["300g de arroz arbóreo", "200g de camarão", "caldo de legumes", "1 cebola"],
-    instructions: ["Refogar a cebola, adicionar o arroz e regar com caldo aos poucos.", "Adicionar os camarões nos últimos minutos.", "Finalizar com manteiga e parmesão."],
+    instructions: ["Refogar a cebola, adicionar o arroz e regar com caldo aos poucos.", "Adicionar os camarões nos últimos minutos.", "Finalizar com manteiga e queijo parmesão."],
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const recipes = [
     time: "1h",
     difficulty: "Fácil",
     ingredients: ["200g de farinha", "200g de açúcar", "3 ovos", "100g de cacau"],
-    instructions: ["Misturar os ingredientes secos e depois os líquidos.", "Assar a 180°C por 35-40 minutos.", "Cobrir com ganache quando frio."],
+    instructions: ["Misturar os ingredientes secos e depois os líquidos.", "Assar a 180°C por 35-40 minutos.", "Cobrir com ganache quando estiver frio."],
   },
   {
     id: 4,
@@ -101,7 +101,7 @@ const recipes = [
     description: "Sopa nutritiva com legumes frescos.",
     time: "35min",
     difficulty: "Fácil",
-    ingredients: ["2 cenouras", "2 batatas", "1 curgete", "1 cebola", "1 litro de caldo de legumes", "Azeite, sal e pimenta"],
+    ingredients: ["2 cenouras", "2 batatas", "1 courgette", "1 cebola", "1 litro de caldo de legumes", "Azeite, sal e pimenta"],
     instructions: [
       "Picar todos os legumes e refogar a cebola em azeite.",
       "Adicionar os legumes e o caldo, cozinhar até ficarem macios.",
@@ -200,7 +200,7 @@ const recipes = [
     description: "Hambúrguer artesanal com carne fresca e pão brioche.",
     time: "45min",
     difficulty: "Fácil",
-    ingredients: ["500g de carne moída", "1 ovo", "Pão brioche", "Alface, tomate, queijo", "Sal e pimenta"],
+    ingredients: ["500g de carne picada", "1 ovo", "Pão brioche", "Alface, tomate, queijo", "Sal e pimenta"],
     instructions: [
       "Temperar a carne com sal e pimenta e formar os hambúrgueres.",
       "Grelhar os hambúrgueres até o ponto desejado.",
@@ -284,7 +284,7 @@ const recipes = [
     description: "Ensopado de carne moída com feijão e especiarias.",
     time: "1h 10min",
     difficulty: "Média",
-    ingredients: ["400g de carne moída", "1 lata de feijão vermelho", "1 cebola", "Pimenta chili em pó", "Tomate pelado"],
+    ingredients: ["400g de carne picada", "1 lata de feijão vermelho", "1 cebola", "Pimenta chili em pó", "Tomate pelado"],
     instructions: [
       "Refogar a cebola e a carne até dourar.",
       "Adicionar tomate pelado, feijão e chili em pó e cozinhar por 30-40 minutos.",

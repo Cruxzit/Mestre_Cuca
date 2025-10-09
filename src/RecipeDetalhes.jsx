@@ -1,11 +1,14 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import recipes from './data/recipes';
+import { useFavorites } from './hooks/useFavorites';
+import FaveButton from './components/FaveButton';
 
 const RecipeDetalhes = () => {
   const { id } = useParams();
   const recipeId = Number(id);
   const recipe = recipes.find((r) => r.id === recipeId);
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   if (!recipe) {
     return (
@@ -20,7 +23,17 @@ const RecipeDetalhes = () => {
     <main className="recipe-detail">
       <div className="detail-header">
         <h2>{recipe.title}</h2>
-        <Link to="/receitas" className="btn-secondary">← Voltar</Link>
+        <div className="detail-header-actions">
+          <FaveButton 
+            isLiked={isFavorite(recipe.id)}
+            onToggle={() => toggleFavorite(recipe.id)}
+            size="large"
+            className="fave-button-header-action"
+          >
+            {isFavorite(recipe.id) ? 'Favorito' : 'Adicionar aos Favoritos'}
+          </FaveButton>
+          <Link to="/receitas" className="btn-secondary">← Voltar</Link>
+        </div>
       </div>
       <img src={recipe.image} alt={recipe.title} className="detail-image" />
       <p className="detail-description">{recipe.description}</p>
@@ -43,7 +56,7 @@ const RecipeDetalhes = () => {
 
       {recipe.instructions && (
         <section className="detail-instructions">
-          <h3>Instruções</h3>
+          <h3>Preparação</h3>
           <ol>
             {recipe.instructions.map((step, idx) => (
               <li key={idx}>{step}</li>
