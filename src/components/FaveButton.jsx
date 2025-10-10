@@ -34,7 +34,9 @@ const FaveButton = ({
     }
   }, [isLiked]);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    // evitar que o clique no botão também dispare o clique do cartão pai
+    if (e && e.stopPropagation) e.stopPropagation()
     if (!disabled && onToggle) {
       onToggle();
     }
