@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import recipes from './data/recipes';
-import FaveButton from './components/FaveButton';
-import { useFavorites } from './hooks/useFavorites';
+// favorites managed on recipe details page only
+import { MdRestaurant } from 'react-icons/md';
 
 const categoryConfig = [
 	{
@@ -28,8 +28,6 @@ const categoryConfig = [
 ]
 
 const Categorias = () => {
-	const { isFavorite, toggleFavorite } = useFavorites();
-
 	return (
 		<main className="categories-page">
 			<h2 className="categories-title">Categorias</h2>
@@ -43,26 +41,24 @@ const Categorias = () => {
 						<h3 id={`cat-${cat.key}`}>{cat.title}</h3>
 						<div className="recipes-grid">
 							{items.map(recipe => (
-								<div className="recipe-card" key={recipe.id}>
-									<div className="recipe-image-container">
-										<img src={recipe.image} alt={recipe.title} className="recipe-image" />
-										<FaveButton
-											isLiked={isFavorite(recipe.id)}
-											onToggle={() => toggleFavorite(recipe.id)}
-											size="small"
-											className="fave-button-positioned"
-										/>
-									</div>
-									<div className="recipe-info">
-										<h4 className="recipe-name">{recipe.title}</h4>
-										<p className="recipe-desc">{recipe.description}</p>
-										<div className="recipe-meta">
-											<span className="recipe-time">⏱ {recipe.time}</span>
-											<span className="recipe-difficulty">Dificuldade: {recipe.difficulty}</span>
+								<Link to={`/receitas/${recipe.id}`} key={recipe.id} className="recipe-card-link">
+									<div className="recipe-card" role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.click(); }}>
+											<div className="recipe-image-container">
+												<img src={recipe.image} alt={recipe.title} className="recipe-image" />
+											</div>
+										<div className="recipe-info">
+											<h4 className="recipe-name">{recipe.title}</h4>
+											<p className="recipe-desc">{recipe.description}</p>
+											<div className="recipe-meta">
+												<span className="recipe-time">⏱ {recipe.time}</span>
+												<span className="recipe-difficulty"><MdRestaurant /> {recipe.difficulty}</span>
+											</div>
+											<div className="card-actions">
+											  <span className="btn-primary">Ver Receita</span>
+											</div>
 										</div>
-										<Link to={`/receitas/${recipe.id}`} className="btn-primary">Ver Receita</Link>
 									</div>
-								</div>
+								</Link>
 							))}
 						</div>
 					</section>

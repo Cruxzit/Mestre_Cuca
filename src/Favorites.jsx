@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import recipes from './data/recipes';
 import { useFavorites } from './hooks/useFavorites';
+import { MdRestaurant } from 'react-icons/md';
 
 const Favorites = () => {
-  const { getFavoriteRecipes, toggleFavorite, isFavorite, favoritesCount } = useFavorites();
+  const { getFavoriteRecipes, favoritesCount } = useFavorites();
   const favoriteRecipes = getFavoriteRecipes(recipes);
 
   if (favoritesCount === 0) {
@@ -27,27 +28,24 @@ const Favorites = () => {
       </h2>
       <div className="recipes-grid">
         {favoriteRecipes.map((recipe) => (
-          <div className="recipe-card" key={recipe.id}>
-            <div className="recipe-image-container">
-              <img src={recipe.image} alt={recipe.title} className="recipe-image" />
-              <button 
-                className={`favorite-btn ${isFavorite(recipe.id) ? 'favorite-active' : ''}`}
-                onClick={() => toggleFavorite(recipe.id)}
-                aria-label="Remover dos favoritos"
-              >
-                ❤️
-              </button>
-            </div>
-            <div className="recipe-info">
-              <h3 className="recipe-name">{recipe.title}</h3>
-              <p className="recipe-desc">{recipe.description}</p>
-              <div className="recipe-meta">
-                <span className="recipe-time">⏱ {recipe.time}</span>
-                <span className="recipe-difficulty">Dificuldade: {recipe.difficulty}</span>
+          <Link to={`/receitas/${recipe.id}`} key={recipe.id} className="recipe-card-link">
+            <div className="recipe-card" role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.click(); }}>
+              <div className="recipe-image-container">
+                <img src={recipe.image} alt={recipe.title} className="recipe-image" />
               </div>
-              <Link to={`/receitas/${recipe.id}`} className="btn-primary">Ver Receita</Link>
+              <div className="recipe-info">
+                <h3 className="recipe-name">{recipe.title}</h3>
+                <p className="recipe-desc">{recipe.description}</p>
+                <div className="recipe-meta">
+                  <span className="recipe-time">⏱ {recipe.time}</span>
+                  <span className="recipe-difficulty"><MdRestaurant /> {recipe.difficulty}</span>
+                </div>
+                <div className="card-actions">
+                  <span className="btn-primary">Ver Receita</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </main>

@@ -8,6 +8,10 @@ import RecipeDetalhes from './RecipeDetalhes';
 import Favorites from './Favorites';
 import Contact from './Contact';
 import Categorias from './Categorias';
+import CategoriaDetalhe from './CategoriaDetalhe';
+import Privacy from './Privacy';
+import Terms from './Terms';
+import NotFound from './NotFound';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -22,8 +26,12 @@ function App() {
           <Route path="/receitas" element={<Recipes />} />
           <Route path="/receitas/:id" element={<RecipeDetalhes />} />
           <Route path="/categorias" element={<Categorias />} />
+          <Route path="/categorias/:slug" element={<CategoriaDetalhe />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/favoritos" element={<Favorites />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </div>

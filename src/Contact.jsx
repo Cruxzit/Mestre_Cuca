@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import ContactModal from "./components/ContactModal";
 
 const CONTACT_DRAFT_KEY = 'mestre-cuca-contact-draft'
 const CONTACTS_KEY = 'mestre-cuca-contacts'
@@ -11,6 +12,10 @@ function Contact() {
         telefone: "",
         mensagem: ""
     });
+    const [showModal, setShowModal] = useState(false);
+    const [submittedName, setSubmittedName] = useState("");
+    const [processing, setProcessing] = useState(false);
+    const timerRef = useRef(null);
 
     // carregar rascunho do localStorage
     useEffect(() => {
@@ -43,15 +48,33 @@ function Contact() {
             const toSave = { ...formData, createdAt: new Date().toISOString() }
             existing.push(toSave)
             localStorage.setItem(CONTACTS_KEY, JSON.stringify(existing))
+            // guardar nome antes de limpar
+            setSubmittedName(formData.nome)
             // limpar rascunho e form
             localStorage.removeItem(CONTACT_DRAFT_KEY)
             setFormData({ nome: "", email: "", telefone: "", mensagem: "" })
-            alert("Mensagem enviada com sucesso! Entraremos em contacto em breve.")
+            // mostrar modal com atraso de 1 segundo
+            setProcessing(true);
+            if (timerRef.current) clearTimeout(timerRef.current);
+            timerRef.current = setTimeout(() => {
+                setShowModal(true);
+                setProcessing(false);
+            }, 1000);
         } catch (e) {
             console.error('Erro ao salvar contacto:', e)
             alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.')
         }
     };
+
+    // limpar timers se o componente desmontar
+    useEffect(() => {
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+                timerRef.current = null;
+            }
+        };
+    }, []);
 
     return (
         <div className="page-container">
@@ -119,8 +142,8 @@ function Contact() {
                             ></textarea>
                         </div>
 
-                        <button type="submit" className="submit-button">
-                            Enviar Mensagem
+                        <button type="submit" className="submit-button" disabled={processing}>
+                            {processing ? 'A processar...' : 'Enviar Mensagem'}
                         </button>
                     </form>
                 </div>
@@ -155,6 +178,12 @@ function Contact() {
                     </div>
                 </div>
             </section>
+
+            <ContactModal 
+                isOpen={showModal} 
+                onClose={() => setShowModal(false)} 
+                contactName={submittedName}
+            />
         </div>
     );
 }

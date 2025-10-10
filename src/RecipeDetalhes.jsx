@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import recipes from './data/recipes';
 import { useFavorites } from './hooks/useFavorites';
 import FaveButton from './components/FaveButton';
+import { MdRestaurant } from 'react-icons/md';
 
 const RecipeDetalhes = () => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const RecipeDetalhes = () => {
 
       <div className="detail-meta">
         <span>⏱ {recipe.time}</span>
-        <span>Dificuldade: {recipe.difficulty}</span>
+        <span><MdRestaurant /> {recipe.difficulty}</span>
       </div>
 
       {recipe.ingredients && (

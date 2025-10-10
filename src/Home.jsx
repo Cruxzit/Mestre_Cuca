@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import recipes from './data/recipes';
+import { GiSteak, GiFishCooked, GiCakeSlice, GiCoffeeCup } from 'react-icons/gi';
+import { MdAccessTime, MdRestaurant } from 'react-icons/md';
 
 const Home = () => {
   return (
@@ -12,8 +16,8 @@ const Home = () => {
               Descobre receitas incríveis e transforma a tua cozinha num verdadeiro paraíso gastronómico
             </p>
             <div className="hero-buttons">
-              <button className="btn-primary">Explorar Receitas</button>
-              <button className="btn-secondary">Ver Categorias</button>
+              <Link to="/receitas" className="btn-primary">Explorar Receitas</Link>
+              <Link to="/categorias" className="btn-secondary">Ver Categorias</Link>
             </div>
           </div>
           <div className="hero-image">
@@ -30,41 +34,41 @@ const Home = () => {
         </div>
         
         <div className="recipes-grid">
-          <div className="recipe-card">
+          <Link to="/receitas/1" className="recipe-card recipe-card-link">
             <img src="/receita1.jpg" alt="Lasanha" className="recipe-image" />
             <div className="recipe-content">
               <h3 className="recipe-title">Lasanha Bolonhesa</h3>
               <p className="recipe-description">Uma deliciosa lasanha com molho bolonhesa caseiro</p>
               <div className="recipe-meta">
-                <span className="recipe-time">⏱️ 45 min</span>
-                <span className="recipe-difficulty">👨‍🍳 Médio</span>
+                <span className="recipe-time"><MdAccessTime /> 45 min</span>
+                <span className="recipe-difficulty"><MdRestaurant /> Médio</span>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="recipe-card">
+          <Link to="/receitas/2" className="recipe-card recipe-card-link">
             <img src="/receita2.jpg" alt="Risotto" className="recipe-image" />
             <div className="recipe-content">
               <h3 className="recipe-title">Risotto de Camarão</h3>
               <p className="recipe-description">Risotto cremoso com camarões frescos e ervas</p>
               <div className="recipe-meta">
-                <span className="recipe-time">⏱️ 30 min</span>
-                <span className="recipe-difficulty">👨‍🍳 Fácil</span>
+                <span className="recipe-time"><MdAccessTime /> 30 min</span>
+                <span className="recipe-difficulty"><MdRestaurant /> Fácil</span>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="recipe-card">
+          <Link to="/receitas/3" className="recipe-card recipe-card-link">
             <img src="/receita3.jpg" alt="Bolo de Chocolate" className="recipe-image" />
             <div className="recipe-content">
               <h3 className="recipe-title">Bolo de Chocolate</h3>
               <p className="recipe-description">Bolo fofinho com cobertura de chocolate cremosa</p>
               <div className="recipe-meta">
-                <span className="recipe-time">⏱️ 60 min</span>
-                <span className="recipe-difficulty">👨‍🍳 Fácil</span>
+                <span className="recipe-time"><MdAccessTime /> 60 min</span>
+                <span className="recipe-difficulty"><MdRestaurant /> Fácil</span>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -76,29 +80,33 @@ const Home = () => {
         </div>
         
         <div className="categories-grid">
-          <div className="category-card">
-            <span className="category-icon">🍝</span>
-            <h3 className="category-title">Massas</h3>
-            <p className="category-count">24 receitas</p>
-          </div>
+          {/* Sincronizado com CategoriaDetalhe */}
+          {(() => {
+            const idSets = {
+              carne: [1, 4, 7, 15, 16, 21, 19],
+              peixe: [5, 6, 13],
+              sobremesa: [3, 12, 20],
+              'pequeno-almoco': [11, 20]
+            };
 
-          <div className="category-card">
-            <span className="category-icon">🥩</span>
-            <h3 className="category-title">Carnes</h3>
-            <p className="category-count">18 receitas</p>
-          </div>
+            const config = [
+              { key: 'carne', icon: <GiSteak />, title: 'Pratos de Carne' },
+              { key: 'peixe', icon: <GiFishCooked />, title: 'Peixes e Mariscos' },
+              { key: 'sobremesa', icon: <GiCakeSlice />, title: 'Sobremesas' },
+              { key: 'pequeno-almoco', icon: <GiCoffeeCup />, title: 'Pequeno-almoço' }
+            ];
 
-          <div className="category-card">
-            <span className="category-icon">🍰</span>
-            <h3 className="category-title">Sobremesas</h3>
-            <p className="category-count">32 receitas</p>
-          </div>
-
-          <div className="category-card">
-            <span className="category-icon">🥗</span>
-            <h3 className="category-title">Saladas</h3>
-            <p className="category-count">15 receitas</p>
-          </div>
+            return config.map(cat => {
+              const count = recipes.filter(r => (idSets[cat.key] || []).includes(r.id)).length;
+              return (
+                <Link to={`/categorias/${cat.key}`} className="category-card" key={cat.key}>
+                  <span className="category-icon">{cat.icon}</span>
+                  <h3 className="category-title">{cat.title}</h3>
+                  <p className="category-count">{count} receitas</p>
+                </Link>
+              )
+            })
+          })()}
         </div>
       </section>
     </main>
