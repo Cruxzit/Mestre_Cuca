@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+
+const CONTACT_DRAFT_KEY = 'mestre-cuca-contact-draft'
+const CONTACTS_KEY = 'mestre-cuca-contacts'
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -9,6 +12,25 @@ function Contact() {
         mensagem: ""
     });
 
+    // carregar rascunho do localStorage
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem(CONTACT_DRAFT_KEY)
+            if (saved) setFormData(JSON.parse(saved))
+        } catch (e) {
+            console.error('Erro ao carregar rascunho do contacto:', e)
+        }
+    }, [])
+
+    // salvar rascunho sempre que o formData mudar
+    useEffect(() => {
+        try {
+            localStorage.setItem(CONTACT_DRAFT_KEY, JSON.stringify(formData))
+        } catch (e) {
+            console.error('Erro ao salvar rascunho do contacto:', e)
+        }
+    }, [formData])
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -16,8 +38,19 @@ function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert("Mensagem enviada com sucesso! Entraremos em contacto em breve.");
-        setFormData({ nome: "", email: "", telefone: "", mensagem: "" });
+        try {
+            const existing = JSON.parse(localStorage.getItem(CONTACTS_KEY) || '[]')
+            const toSave = { ...formData, createdAt: new Date().toISOString() }
+            existing.push(toSave)
+            localStorage.setItem(CONTACTS_KEY, JSON.stringify(existing))
+            // limpar rascunho e form
+            localStorage.removeItem(CONTACT_DRAFT_KEY)
+            setFormData({ nome: "", email: "", telefone: "", mensagem: "" })
+            alert("Mensagem enviada com sucesso! Entraremos em contacto em breve.")
+        } catch (e) {
+            console.error('Erro ao salvar contacto:', e)
+            alert('Ocorreu um erro ao enviar a mensagem. Tente novamente.')
+        }
     };
 
     return (
@@ -99,7 +132,7 @@ function Contact() {
                     Informações de Contacto
                 </h2>
                 <div className="cards-grid">
-                    <div className="feature-card">d
+                    <div className="feature-card">
                         <div className="card-icon">
                             <MdEmail />
                         </div>
