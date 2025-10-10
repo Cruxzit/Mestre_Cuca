@@ -1987,3 +1987,52 @@ body {
     font-size: 1.3rem;
   }
 }
+
+/* ========================================
+   Categories Page Styles
+   ======================================== */
+.categories-page {
+  padding: 40px 20px;
+  background: transparent;
+}
+
+.categories-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #8B4513;
+  margin-bottom: 32px;
+  font-family: Georgia, serif;
+  letter-spacing: 2px;
+}
+
+.category-section {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+.category-section h3 {
+  font-size: 1.8rem;
+  color: #8B4513;
+  margin-bottom: 24px;
+  font-family: Georgia, serif;
+  text-align: left;
+  padding-left: 10px;
+  border-left: 4px solid #A0522D;
+}
+
+/* Responsive Design for Categories */
+@media (max-width: 768px) {
+  .categories-title {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+
+  .category-section {
+    margin-bottom: 40px;
+  }
+
+  .category-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
