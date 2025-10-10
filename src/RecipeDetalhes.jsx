@@ -27,11 +27,9 @@ const RecipeDetalhes = () => {
           <FaveButton 
             isLiked={isFavorite(recipe.id)}
             onToggle={() => toggleFavorite(recipe.id)}
-            size="large"
-            className="fave-button-header-action"
-          >
-            {isFavorite(recipe.id) ? 'Favorito' : 'Adicionar aos Favoritos'}
-          </FaveButton>
+            size="medium"
+            className="fave-button-inline"
+          />
           <Link to="/receitas" className="btn-secondary">← Voltar</Link>
         </div>
       </div>
