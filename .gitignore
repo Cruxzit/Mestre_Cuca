@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backend env
+backend/.env
+
+# Lockfiles (opcionalmente rastrear package-lock.json para cada package)
+backend/package-lock.json
+package-lock.json
+
+# Public uploads
+public/uploads/

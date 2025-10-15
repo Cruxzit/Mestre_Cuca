@@ -68,6 +68,50 @@ npm run lint
 
 URL local padrão no dev: http://localhost:5173
 
+## Backend (API)
+
+O projecto inclui um pequeno backend em Node/Express que fornece a API de receitas e usa MySQL.
+
+Como correr o backend localmente:
+
+1. Ir para a pasta do backend:
+
+```bash
+cd backend
+```
+
+2. Instalar dependências:
+
+```bash
+npm install
+```
+
+3. Criar um ficheiro `.env` em `backend/` com as variáveis de ambiente necessárias. Exemplo mínimo:
+
+````env
+DB_HOST=localhost
+DB_USER=seu_user
+DB_PASSWORD=sua_password
+DB_NAME=nome_do_banco
+DB_PORT=3306
+PORT=3001
+````
+
+4. Iniciar o servidor em modo desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Endpoints úteis:
+
+- GET http://localhost:3001/health — healthcheck
+- Base da API: http://localhost:3001/api/receitas
+
+Observações:
+- Não commites o ficheiro `backend/.env` com credenciais para o repositório.
+- Recomenda-se commitar `backend/package-lock.json` para resultados reprodutíveis.
+
 ## Como adicionar receitas
 
 - Edite o ficheiro `src/data/recipes.js` e adicione um novo objeto de receita.
